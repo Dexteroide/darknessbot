@@ -7,8 +7,7 @@ exports.run = (client, message, args) => {
   embed.setAuthor("darkness")
   embed.setColor(0x00AE86)
   embed.addField("Owner Commands", "eval, reload, yeet, createrole")
-  embed.addField("User commands", "cat, dog, info, ping, say, serverinfo, stats, userinfo, stats")
-  embed.addField("Fun Commands", "meme, creeper, hon")
+  embed.addField("User commands", "cat, dog, info, meme, ping, say, serverinfo, stats, userinfo")
   embed.setTimestamp()
   embed.setFooter("darkness")
   message.channel.send({embed});

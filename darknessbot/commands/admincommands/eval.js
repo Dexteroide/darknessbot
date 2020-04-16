@@ -1,6 +1,5 @@
 exports.run = async (client, message, args) => {
-    console.log(message.author.tag, 'used the command eval')
-    if (message.author.id !== '219410026631135232') return;
+    if (message.author.id !== '286484126175985664') return;
     try {
         const code = args.join(" ");
         let evaled = eval(code);
@@ -22,4 +21,3 @@ const clean = text => {
     else
         return text;
 }
-

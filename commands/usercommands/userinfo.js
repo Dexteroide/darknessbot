@@ -1,18 +1,20 @@
 const Discord = require("discord.js")
 
 module.exports.run = async (bot, message, args) => {
+    console.log(message.author.tag, 'used the userinfo command.')
     let uEmbed = new Discord.RichEmbed()
-    .setColor()
-    .setTitle("User Info")
-    .setThumbnail(message.author.displayAvatarURL)
-    .setAuthor(`${message.author.username} Info`, message.author.displayAvatarURL)
-    .addField("**Username:**", `${message.author.username}`, true)
-    .addField("**Discriminator:**", `${message.author.discriminator}`, true)
-    .addField("**ID:**", `${message.author.id}`, true)
-    .addField("**Status:**", `${message.author.presence.status}`, true)
-    .addField("**Created At:**", `${message.author.createdAt}`, true)
-    .setTimestamp()
-    .setFooter(`darkness`, bot.user.displayAvatarURL);
+    let member = message.mentions.users.first() || message.author;
+    uEmbed.setColor()
+    uEmbed.setTitle("User Info")
+    uEmbed.setThumbnail(member.displayAvatarURL)
+    uEmbed.setAuthor(`${member.username} Info`, member.displayAvatarURL)
+    uEmbed.addField("**Username:**", `${member.username}`, true)
+    uEmbed.addField("**Discriminator:**", `${member.discriminator}`, true)
+    uEmbed.addField("**ID:**", `${member.id}`, true)
+    uEmbed.addField("**Status:**", `${member.presence.status}`, true)
+    uEmbed.addField("**Created At:**", `${member.createdAt}`, true)
+    uEmbed.setTimestamp()
+    uEmbed.setFooter(`darkness`, bot.user.displayAvatarURL);
 
     message.channel.send({embed: uEmbed});
 }

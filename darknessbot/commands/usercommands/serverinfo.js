@@ -1,7 +1,6 @@
 const Discord = require("discord.js")
 
 module.exports.run = async (bot, message, args) => {
-    console.log(message.author.tag, 'used the serverinfo command.')
     let sEmbed = new Discord.RichEmbed()
     .setColor()
     .setThumbnail(message.guild.iconURL)

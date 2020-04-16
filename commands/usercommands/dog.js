@@ -1,7 +1,7 @@
 const randomPuppy = require('random-puppy');
 
 module.exports.run = async (bot, message, args) => {
-
+    console.log(message.author.tag, 'used the command dog')
     let reddit = [
         "dog"
     ]
