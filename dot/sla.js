@@ -1,16 +1,9 @@
 const randomPuppy = require('random-puppy');
 
-// deprecated
 module.exports.run = async (bot, message, args) => {
 
     let reddit = [
-        "anime",
-        "aonoexorcist",
-        "shinoa",
-        "yuichirohyakuya",
-        "mikaelahyakuya",
-        "rinokumura",
-        "mephistophines"
+        "nhaa"
     ]
 
     let subreddit = reddit[Math.floor(Math.random() * reddit.length)];
@@ -21,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
             await message.channel.send({
                 files: [{
                     attachment: url,
-                    name: 'ows.png'
+                    name: 'sla.png'
                 }]
             }).then(() => message.channel.stopTyping());
     }).catch(err => console.error(err));

@@ -43,6 +43,17 @@ fs.readdir("./commands/admincommands/", (err, files) => {
   });
 });
 
+fs.readdir("./commands/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    if (!file.endsWith(".js")) return;
+    let props = require(`./commands/${file}`);
+    let commandName = file.split(".")[0];
+    console.log(`Attempting to load command ${commandName}`);
+    client.commands.set(commandName, props);
+  });
+});
+
 const init = async () => {
 
 const evtFiles = await readdir("./events/");
@@ -51,9 +62,6 @@ evtFiles.forEach(file => {
   const eventName = file.split(".")[0];
   client.logger.log(`Loading Event: ${eventName}`);
   const event = require(`./events/${file}`);
-  // Bind the client to any event, before the existing arguments
-  // provided by the discord.js event. 
-  // This line is awesome by the way. Just sayin'.
   client.on(eventName, event.bind(null, client));
 });
 };
