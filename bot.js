@@ -1,4 +1,17 @@
-const {Client, RichEmbed} = require('discord.js');
+const http = require("http");
+const express = require("express");
+const app = express();
+app.get("/", (request, response) => {
+  console.log(Date.now() + " Ping Received");
+  response.sendStatus(200);
+});
+app.listen(process.env.PORT);
+setInterval(() => {
+  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
+}, 280000);
+
+
+const {Client, RichEmbed, Collection} = require('discord.js');
 const client = new Client();
 const fs = require("fs");
 const Enmap = require("enmap");
@@ -17,41 +30,24 @@ fs.readdir("./events/", (err, files) => {
   });
 });
 
-client.commands = new Enmap();
-client.aliases = new Enmap();
+client.commands = new Collection();
+client.aliases = new Collection();
+
 client.settings = new Enmap({name: "settings"});
 
-fs.readdir("./commands/usercommands/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/usercommands/${file}`);
-    let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
-    client.commands.set(commandName, props);
-  });
-});
+const categories = ["usercomamnds", "admincommands"];
 
-fs.readdir("./commands/admincommands/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/admincommands/${file}`);
-    let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
-    client.commands.set(commandName, props);
-  });
-});
-
-fs.readdir("./commands/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/${file}`);
-    let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
-    client.commands.set(commandName, props);
-  });
+categories.forEach(category => {
+  for (category of categories) {
+    const categoriesFiles = fs.readdirSync(`./commands/${category}/`);
+    for (const file of categoriesFiles) {
+      const props = require(`./commands/${category}/${file}`);
+      client.commands.set(props.help.name, props);
+      props.help.aliases.forEach(alias => {
+        client.aliases.set(alias, props.help.name);
+      });
+    }
+  }
 });
 
 const init = async () => {
@@ -82,4 +78,4 @@ client.on('message', message => {
     }
   });
 
- client.login(config.TOKEN);   
+ client.login(process.env.TOKEN);   

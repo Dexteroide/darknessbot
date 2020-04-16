@@ -1,22 +1,10 @@
 const randomPuppy = require('random-puppy');
 
 module.exports.run = async (bot, message, args) => {
-console.log(message.author.tag, 'used the meme command.');
+    console.log(message.author.tag, 'used the command cat')
     let reddit = [
-        "meme",
-        "animemes",
-        "MemesOfAnime",
-        "animememes",
-        "AnimeFunny",
-        "dankmemes",
-        "dankmeme",
-        "wholesomememes",
-        "MemeEconomy",
-        "techsupportanimals",
-        "meirl",
-        "me_irl",
-        "2meirl4meirl",
-        "AdviceAnimals"
+        "cat"
+       
     ]
 
     let subreddit = reddit[Math.floor(Math.random() * reddit.length)];
@@ -27,9 +15,19 @@ console.log(message.author.tag, 'used the meme command.');
             await message.channel.send({
                 files: [{
                     attachment: url,
-                    name: 'meme.png'
+                    name: 'cat.png'
                 }]
             }).then(() => message.channel.stopTyping());
     }).catch(err => console.error(err));
 
 };
+
+module.exports.help = {
+    name: "cat",
+    aliases: [],
+    disabled: false,
+    ownerOnly: false,
+    adminOnly: false,
+    modOnly: false,
+    category: "Fun"
+}

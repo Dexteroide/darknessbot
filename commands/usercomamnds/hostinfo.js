@@ -14,3 +14,13 @@ exports.run = (client, message, args, level) => { // eslint-disable-line no-unus
 • Discord.js :: v${version}
 • Node       :: ${process.version}`, {code: "asciidoc"});
 };
+
+module.exports.help = {
+  name: "hostinfo",
+  aliases: ["hi"],
+  disabled: false,
+  ownerOnly: false,
+  adminOnly: false,
+  modOnly: false,
+  category: "Information"
+};

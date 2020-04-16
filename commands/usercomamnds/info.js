@@ -14,3 +14,13 @@ exports.run = (client, message, args) => {
   embed.setFooter("darkness")
   message.channel.send(embed);
 };
+
+module.exports.help = {
+  name: "info",
+  aliases: ["i"],
+  disabled: false,
+  ownerOnly: false,
+  adminOnly: false,
+  modOnly: false,
+  category: "Information"
+};

@@ -17,3 +17,13 @@ module.exports.run = async (bot, message, args) => {
     }
 
 }
+
+module.exports.help = {
+    name: "say",
+    aliases: [],
+    disabled: false,
+    ownerOnly: false,
+    adminOnly: false,
+    modOnly: false,
+    category: "Fun"
+}

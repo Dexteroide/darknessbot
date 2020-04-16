@@ -10,3 +10,13 @@ exports.run = (client, message, args) => {
         embed.setFooter('You look nice', client.user.displayAvatarURL);
         message.channel.send(embed);
     };
+
+    module.exports.help = {
+        name: "avatar",
+        aliases: ["h"],
+        disabled: false,
+        ownerOnly: false,
+        adminOnly: false,
+        modOnly: false,
+        category: "Discord"
+      };    

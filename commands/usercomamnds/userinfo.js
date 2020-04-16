@@ -18,3 +18,13 @@ module.exports.run = async (bot, message, args) => {
 
     message.channel.send({embed: uEmbed});
 }
+
+module.exports.help = {
+    name: "userinfo",
+    aliases: ["ui"],
+    disabled: false,
+    ownerOnly: false,
+    adminOnly: false,
+    modOnly: false,
+    category: "Discord"
+  };

@@ -14,3 +14,13 @@ module.exports.run = async (bot, message, args) => {
     .setFooter(`darkness`, bot.user.displayAvatarURL);
     message.channel.send({embed: sEmbed});
 }
+
+module.exports.help = {
+    name: "serverinfo",
+    aliases: ["si"],
+    disabled: false,
+    ownerOnly: false,
+    adminOnly: false,
+    modOnly: false,
+    category: "Discord"
+  };

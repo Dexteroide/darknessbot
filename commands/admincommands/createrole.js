@@ -11,4 +11,14 @@ module.exports.run = async (client, message, args) => {
     } else if (color && color === 'nocolor') {
         await message.guild.createRole({ name: name }).then(role => { console.log('Role created'); message.reply(`${role.name} was created`) }).catch(e => console.error(e))
     }
-} 
+}
+
+module.exports.help = {
+    name: "createrole",
+    aliases: ["cr"],
+    disabled: false,
+    ownerOnly: false,
+    adminOnly: true,
+    modOnly: false,
+    category: "Mod Commands"
+  };

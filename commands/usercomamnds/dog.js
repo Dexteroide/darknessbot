@@ -1,10 +1,9 @@
 const randomPuppy = require('random-puppy');
 
 module.exports.run = async (bot, message, args) => {
-    console.log(message.author.tag, 'used the command cat')
+    console.log(message.author.tag, 'used the command dog')
     let reddit = [
-        "cat"
-       
+        "dog"
     ]
 
     let subreddit = reddit[Math.floor(Math.random() * reddit.length)];
@@ -15,9 +14,19 @@ module.exports.run = async (bot, message, args) => {
             await message.channel.send({
                 files: [{
                     attachment: url,
-                    name: 'cat.png'
+                    name: 'dog.png',
                 }]
             }).then(() => message.channel.stopTyping());
     }).catch(err => console.error(err));
 
 };
+
+module.exports.help = {
+    name: "dog",
+    aliases: [],
+    disabled: false,
+    ownerOnly: false,
+    adminOnly: false,
+    modOnly: false,
+    category: "Fun"
+}

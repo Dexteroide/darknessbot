@@ -23,3 +23,12 @@ const clean = text => {
         return text;
 }
 
+module.exports.help = {
+    name: "eval",
+    aliases: ["evaluate"],
+    disabled: true,
+    ownerOnly: true,
+    adminOnly: false,
+    modOnly: false,
+    category: "Owner-only Commands"
+  };

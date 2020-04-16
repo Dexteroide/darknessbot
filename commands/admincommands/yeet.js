@@ -11,7 +11,14 @@ module.exports.run = async (bot, message, args) => {
     } catch(e) {
         message.channel.send(`ERROR: ${e.message}`)
     }
-    
-
-
 }
+
+module.exports.help = {
+    name: "yeet",
+    aliases: [],
+    disabled: false,
+    ownerOnly: false,
+    adminOnly: true,
+    modOnly: false,
+    category: "Admin Commands"
+  };

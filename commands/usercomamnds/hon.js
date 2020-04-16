@@ -9,3 +9,13 @@ module.exports.run = async (client, message, args) => {
         embed.setFooter('darkness', client.user.displayAvatarURL);
         message.channel.send(embed)    
   };
+
+  module.exports.help = {
+    name: "hon",
+    aliases: [],
+    disabled: false,
+    ownerOnly: false,
+    adminOnly: false,
+    modOnly: false,
+    category: "Fun"
+}
